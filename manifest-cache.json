@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "root": [
+    "./",
+    "index.html",
+    "manifest.json",
+    "pwa-cacher.js"
+  ]
+}

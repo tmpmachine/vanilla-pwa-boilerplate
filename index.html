@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- mobile meta tags-->
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <!-- pwa manifest -->
+  <link rel="manifest" href="manifest.json" crossorigin="use-credentials"/>
+  
+</head>
+<body>
+
+  <!-- PWA cache manager -->
+  <h2>Updates & Offline Access</h2>
+  <div>
+    <button data-action="pwaCacher.update" onclick="pwaCacher.Update()">Check for updates</button>
+  </div>
+  <label>
+    <input name="replaceWidgetSettings" type="checkbox" oninput="pwaCacher.SetAutoCache(this.checked)" data-action="pwaCacher.autocache"/>
+    Automatically download latest version.
+  </label>
+  <div>
+    <b>Developer Settings:</b>
+    <div>
+      <label>
+        <input name="replaceWidgetSettings" type="checkbox" oninput="pwaCacher.SetDevMode(this.checked)" data-action="pwaCacher.devmode"/>
+        Disable offline caching.
+      </label>
+    </div>
+  </div>
+  
+  <script src="pwa-cacher.js"></script>
+  <script>
+    pwaCacher.Init();
+  </script>
+  
+</body>
+</html>
