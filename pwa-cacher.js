@@ -30,7 +30,10 @@ let pwaCacher = (function() {
     
     if (isChecked) {
       let isConfirm = window.confirm('This will clear offline cache. Continue?');
-      if (!isConfirm) return;
+      if (!isConfirm) {
+        refreshSettingsState();
+        return;
+      }
       
       await removeCache();
     }
