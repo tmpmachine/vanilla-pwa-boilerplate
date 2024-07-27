@@ -36,6 +36,15 @@
   <script>
     pwaCacher.Init();
   </script>
+
+  <script>
+    // regiter service worker
+    if (typeof(navigator) !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(function(e) {
+        console.error(e);
+      });
+    }
+  </script>
   
 </body>
 </html>
