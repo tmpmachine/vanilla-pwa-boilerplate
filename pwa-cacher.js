@@ -70,6 +70,10 @@ let pwaCacher = (function() {
   }
   
   function Update() {
+    cacheAssets(opt);
+  }
+
+  function cacheAssets(opt) {
     
     fetch(manifestCachePath)
     .then(res => res.json())
@@ -82,13 +86,13 @@ let pwaCacher = (function() {
       let hasLatestCache = cacheNames.find(cname => cname == newCacheVersionKey);
         
       for (let cname of cacheNames) {
-        if (cname == newCacheVersionKey) continue;
+        if (cname == newCacheVersionKey && opt?.isCheckBySystem) continue;
         if (cname.includes(cacheName)) {
           await caches.delete(cname);
         }
       }
       
-      if (hasLatestCache) return;
+      if (hasLatestCache && opt?.isCheckBySystem) return;
   
       caches.open(newCacheVersionKey)
       .then(function(cache) {
@@ -120,7 +124,9 @@ let pwaCacher = (function() {
     refreshSettingsState();
     
     if (!data.isDevMode && data.isAutoCache) {
-      Update();
+      cacheAssets({
+        isCheckBySystem: true,
+      });
     }
   }
   
