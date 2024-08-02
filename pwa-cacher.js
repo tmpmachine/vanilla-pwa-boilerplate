@@ -105,10 +105,10 @@ let pwaCacher = (function() {
         );
       })
       .then(function() {
-        alert('Done! Reload to take effect.');
+        console.log('Done! Reload to take effect.');
       })
       .catch(function(error) {
-        alert('Failed. Check console.');
+        console.log('Failed. Check console.');
       });
     
     });
