@@ -70,7 +70,7 @@ let pwaCacher = (function() {
   }
   
   function Update() {
-    cacheAssets(opt);
+    cacheAssets();
   }
 
   function cacheAssets(opt) {
